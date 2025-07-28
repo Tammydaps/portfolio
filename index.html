@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMUNOTONYE DAPPA - AI/ML Engineer & Researcher</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(-50px) translateY(-30px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: slideUp 1s ease 0.3s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            animation: slideUp 1s ease 0.6s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: slideUp 1s ease 0.9s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            margin: 0;
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #636e72;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Blog Section */
+        .blog {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            margin: 0;
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .blog-card p {
+            color: #636e72;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .blog-date {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            margin: 0;
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 55%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            margin: 0;
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #2d3436;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            margin: 0;
+            max-width: 100%;
+            padding: 5rem 2rem;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">AI Engineer</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Name Here</h1>
+            <p class="subtitle">AI/ML Engineer & Research Scientist</p>
+            <p class="tagline">Building the future through intelligent systems and transformative AI solutions</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-image">
+                <div class="profile-img">
+                    <i class="fas fa-robot"></i>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Pioneering AI Innovation</h3>
+                <p>
+                    As an AI/ML Engineer and Research Scientist with extensive experience in the tech industry, 
+                    I specialize in developing cutting-edge artificial intelligence solutions that solve real-world problems. 
+                    My journey spans from deep learning research to production-scale AI systems.
+                </p>
+                <p>
+                    I'm passionate about the democratization of AI technology and its potential to transform industries. 
+                    Through my work, I aim to bridge the gap between theoretical AI research and practical applications 
+                    that create meaningful impact.
+                </p>
+                <div class="skills">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">NLP</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">MLOps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <h2 class="section-title">AI Insights & Updates</h2>
+        <div class="blog-grid">
+            <article class="blog-card fade-in">
+                <h4>The Future of Generative AI in 2025</h4>
+                <p>Exploring the latest breakthroughs in generative AI and their implications for various industries. From GPT-4 to multimodal models, we're witnessing unprecedented capabilities.</p>
+                <div class="blog-date">July 15, 2025</div>
+            </article>
+            <article class="blog-card fade-in">
+                <h4>Ethics in AI: Building Responsible Systems</h4>
+                <p>Discussing the critical importance of ethical considerations in AI development and deployment. How we can ensure AI serves humanity's best interests.</p>
+                <div class="blog-date">July 8, 2025</div>
+            </article>
+            <article class="blog-card fade-in">
+                <h4>MLOps Best Practices for 2025</h4>
+                <p>Sharing insights on modern MLOps practices, from model versioning to automated deployment pipelines that scale with your organization's needs.</p>
+                <div class="blog-date">June 30, 2025</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2 class="section-title">My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Senior AI Research Scientist</h4>
+                    <p><strong>Tech Company</strong> • 2023 - Present</p>
+                    <p>Leading research initiatives in transformer architectures and multimodal AI systems. Published 5 papers in top-tier conferences including NeurIPS and ICML.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Machine Learning Engineer</h4>
+                    <p><strong>AI Startup</strong> • 2021 - 2023</p>
+                    <p>Developed and deployed ML models serving 1M+ users. Specialized in computer vision and recommendation systems with 40% improvement in user engagement.</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h4>Data Scientist</h4>
+                    <p><strong>Fortune 500 Company</strong> • 2019 - 2021</p>
+                    <p>Built predictive models and analytics pipelines that generated $2M+ in cost savings. Led cross-functional teams in AI adoption initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h4>Neural Architecture Search Framework</h4>
+                <p>Developed an automated neural architecture search system that discovers optimal network designs for specific tasks, reducing manual design time by 80%.</p>
+                <div class="project-tags">
+                    <span class="project-tag">PyTorch</span>
+                    <span class="project-tag">AutoML</span>
+                    <span class="project-tag">CUDA</span>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h4>Real-time Object Detection System</h4>
+                <p>Built a high-performance computer vision system for industrial quality control, achieving 99.5% accuracy with sub-100ms inference time.</p>
+                <div class="project-tags">
+                    <span class="project-tag">YOLO</span>
+                    <span class="project-tag">OpenCV</span>
+                    <span class="project-tag">Edge Computing</span>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h4>Multilingual NLP Platform</h4>
+                <p>Created a comprehensive NLP platform supporting 50+ languages for sentiment analysis, entity recognition, and text summarization.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Transformers</span>
+                    <span class="project-tag">BERT</span>
+                    <span class="project-tag">FastAPI</span>
+                </div>
+            </div>
+            <div class="project-card fade-in">
+                <div class="project-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4>Predictive Analytics Suite</h4>
+                <p>Designed an end-to-end ML pipeline for time-series forecasting with automated feature engineering and model selection capabilities.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Time Series</span>
+                    <span class="project-tag">AutoML</span>
+                    <span class="project-tag">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <h2>Let's Build the Future Together</h2>
+            <p>Interested in collaborating on AI projects or discussing the latest developments in machine learning? I'd love to connect and explore opportunities to create impactful AI solutions.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.project-card, .blog-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title (optional enhancement)
+        const heroTitle = document.querySelector('.hero h1');
+        const originalText = heroTitle.textContent;
+        let index = 0;
+        let isTyping = true;
+
+        function typeEffect() {
+            if (isTyping) {
+                if (index < originalText.length) {
+                    heroTitle.textContent = originalText.slice(0, index + 1);
+                    index++;
+                    setTimeout(typeEffect, 100);
+                }
+            }
+        }
+
+        // Start typing effect after page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                heroTitle.textContent = '';
+                typeEffect();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
