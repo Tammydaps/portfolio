@@ -1,5 +1,8 @@
 # Data scientist/ ML engineer/ AI Reseacher
 
+# About me 
+Hey there, I'm Tamunotonye dappa, a seasoned Data scoientist, machine learning engineer/AI researcher.
+
 ### Education
 B.Tech Mechanical Engineering, Rivers State University
 
